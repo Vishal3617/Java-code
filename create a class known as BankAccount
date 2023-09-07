@@ -1,0 +1,58 @@
+// BankAccount class
+class BankAccount {
+    protected double balance;
+
+
+    public BankAccount(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited $" + amount + ". New balance: $" + balance);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+ 
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn $" + amount + ". New balance: $" + balance);
+        } else {
+            System.out.println("Invalid withdrawal amount or insufficient funds.");
+        }
+    }
+}
+
+
+class SavingsAccount extends BankAccount {
+    public SavingsAccount(double initialBalance) {
+        super(initialBalance);
+    }
+
+  
+    @Override
+    public void withdraw(double amount) {
+        if (amount > 0 && (balance - amount) >= 100) {
+            super.withdraw(amount);
+        } else {
+            System.out.println("Withdrawal not allowed. Minimum balance of $100 must be maintained.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+  
+        SavingsAccount savingsAccount = new SavingsAccount(200);
+
+       
+        savingsAccount.deposit(50);
+        savingsAccount.withdraw(75);
+        savingsAccount.withdraw(50);
+    }
+}
