@@ -1,0 +1,46 @@
+
+class Employee {
+   
+    public void work() {
+        System.out.println("Employee is working");
+    }
+
+  
+    public double getSalary() {
+        // In a real application, you would return the actual salary here
+        return 50000.0;
+    }
+}
+
+
+class HRManager extends Employee {
+    
+    @Override
+    public void work() {
+        System.out.println("HR Manager is managing human resources");
+    }
+
+
+    public void addEmployee(String employeeName) {
+        System.out.println("HR Manager added employee: " + employeeName);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+    
+        Employee employee = new Employee();
+          
+        HRManager hrManager = new HRManager();
+
+        employee.work();
+        
+        hrManager.work();
+        
+        double employeeSalary = employee.getSalary();
+        System.out.println("Employee Salary: $" + employeeSalary);
+        
+        // Call addEmployee() on the HRManager object
+        hrManager.addEmployee("John Doe");
+    }
+}
