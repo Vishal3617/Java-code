@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class StreamAllocation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter marks in English, Maths, and Science (comma-separated):");
+        String input = scanner.nextLine();
+        
+        String[] marksArray = input.split(",");
+        
+        if (marksArray.length != 3) {
+            System.out.println("Invalid input. Please enter marks in the format: English, Maths, Science");
+            return;
+        }
+
+        int englishMarks = Integer.parseInt(marksArray[0].trim());
+        int mathsMarks = Integer.parseInt(marksArray[1].trim());
+        int scienceMarks = Integer.parseInt(marksArray[2].trim());
+
+        if (englishMarks >= 80 && mathsMarks >= 80 && scienceMarks >= 80) {
+            System.out.println("Eligible for Pure Science");
+        } else if (englishMarks >= 80 && mathsMarks >= 60 && scienceMarks >= 80) {
+            System.out.println("Eligible for Bio. Science");
+        } else if (englishMarks >= 60 && mathsMarks >= 60 && scienceMarks >= 60) {
+            System.out.println("Eligible for Commerce");
+        } else {
+            System.out.println("Not eligible for any stream");
+        }
+
+        scanner.close();
+    }
+}
